@@ -1,0 +1,75 @@
+name: RebelSUITE Integration CI
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  integration-tests:
+    runs-on: windows-latest
+    
+    steps:
+    - name: Checkout RebelSUITE-Integration
+      uses: actions/checkout@v3
+      with:
+        path: RebelSUITE-Integration
+    
+    - name: Checkout RebelCAD
+      uses: actions/checkout@v3
+      with:
+        repository: snowmannn129/RebelCAD
+        path: RebelCAD
+    
+    - name: Checkout RebelCODE
+      uses: actions/checkout@v3
+      with:
+        repository: snowmannn129/RebelCODE
+        path: RebelCODE
+    
+    - name: Checkout RebelENGINE
+      uses: actions/checkout@v3
+      with:
+        repository: snowmannn129/RebelENGINE
+        path: RebelENGINE
+    
+    - name: Checkout RebelFLOW
+      uses: actions/checkout@v3
+      with:
+        repository: snowmannn129/RebelFLOW
+        path: RebelFLOW
+    
+    - name: Set up Node.js
+      uses: actions/setup-node@v3
+      with:
+        node-version: 16.x
+    
+    - name: Set up CMake
+      uses: lukka/get-cmake@latest
+    
+    - name: Install dependencies
+      run: |
+        cd RebelSUITE-Integration
+        npm ci
+    
+    - name: Run cross-component tests
+      run: |
+        cd RebelSUITE-Integration
+        npm run test:cross-component
+    
+    - name: Validate shared resources
+      run: |
+        cd RebelSUITE-Integration
+        npm run validate:shared-resources
+    
+    - name: Generate integration report
+      run: |
+        cd RebelSUITE-Integration
+        npm run generate:integration-report
+    
+    - name: Upload integration report
+      uses: actions/upload-artifact@v3
+      with:
+        name: integration-report
+        path: RebelSUITE-Integration/reports/integration-report.html
