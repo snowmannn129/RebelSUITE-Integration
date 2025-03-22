@@ -11,6 +11,7 @@ All RebelSUITE components are housed under a single main directory:
 ```
 C:\Users\snowm\Desktop\VSCode\RebelSUITE\
 ├── RebelCAD/         # CAD/3D modeling software
+├── RebelCALC/        # Advanced computational engine
 ├── RebelCODE/        # Coding and scripting environment
 ├── RebelDESK/        # Lightweight, modular IDE
 ├── RebelENGINE/      # Game development engine
@@ -39,6 +40,11 @@ Each RebelSUITE component is designed to function as a standalone application:
 - A comprehensive CAD/3D modeling software
 - Built using C++ with OpenGL/DirectX
 - Can be used independently for engineering design and 3D modeling
+
+### RebelCALC
+- An advanced computational engine
+- Built using C++ with Lua scripting integration
+- Can be used independently for complex calculations, formula parsing, and mathematical operations
 
 ### RebelCODE
 - A coding and scripting environment
@@ -93,6 +99,16 @@ A centralized asset management system allows sharing resources across components
 - **Asset Versioning**: Maintains version history for all assets
 - **Asset Dependencies**: Tracks dependencies between assets
 - **Asset Conversion**: Handles format conversion between components
+
+The Unified Asset Management System has been implemented in the RebelSUITE_Shared_Resources directory with support for:
+- **TypeScript/JavaScript**: For RebelCODE and RebelFLOW
+- **C++**: For RebelCAD and RebelENGINE
+- **Python**: For RebelDESK and RebelSCRIBE
+
+RebelSCRIBE has been fully integrated with the Unified Asset Management System, providing:
+- Asset browsing and searching
+- Asset importing and exporting
+- Asset management and conversion
 
 ### 5. Shared UI Components
 

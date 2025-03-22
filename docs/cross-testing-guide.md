@@ -155,9 +155,33 @@ This script:
 - Behavior in RebelENGINE matches workflow definition
 - Performance is within acceptable limits
 
-### 4. Multi-Component Asset Pipeline
+### 4. CALC-to-CAD-to-ENGINE Workflow
 
 **Scenario ID**: CT-004  
+**Components**: RebelCALC, RebelCAD, RebelENGINE  
+**Description**: Use RebelCALC to perform calculations that drive parametric modeling in RebelCAD and simulation in RebelENGINE
+
+**Test Steps**:
+1. Launch RebelCALC
+2. Create a computational model with physical parameters
+3. Export the calculation results
+4. Launch RebelCAD
+5. Import the calculation results to drive a parametric model
+6. Verify the model is generated correctly according to calculations
+7. Export the model to RebelENGINE
+8. Run a physics simulation in RebelENGINE using the same parameters
+9. Compare simulation results with original calculations
+
+**Validation Criteria**:
+- Calculations are performed accurately in RebelCALC
+- Parameters are correctly transferred to RebelCAD
+- Model in RebelCAD reflects the calculated parameters
+- Physics simulation in RebelENGINE matches expected behavior
+- Results are consistent across all three components
+
+### 5. Multi-Component Asset Pipeline
+
+**Scenario ID**: CT-005  
 **Components**: All RebelSUITE components  
 **Description**: Test the complete asset pipeline across all components
 
@@ -260,6 +284,7 @@ Cross-testing is essential to ensure that the RebelSUITE ecosystem functions as 
 
 For component-specific testing, refer to the individual testing guides for each component:
 - RebelCAD_Testing_Guide.md
+- RebelCALC_Testing_Guide.md
 - RebelCODE_Testing_Guide.md
 - RebelDESK_Testing_Guide.md
 - RebelENGINE_Testing_Guide.md
